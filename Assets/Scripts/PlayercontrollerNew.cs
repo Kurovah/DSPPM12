@@ -19,14 +19,27 @@ public class PlayercontrollerNew : MonoBehaviour
     public List<Transform> suspensionPoints;
     public Rigidbody rb;
     public CinemachineVirtualCamera virtualCamera;
+
+
+    [Header("VR")]
+    public Transform HandL;
+    public Transform HandR;
+    public XRIDefaultInputActions actions;
+
+
+    [Header("Vehichle")]
+    public Transform WheelPivot;
+
     // Start is called before the first frame update
     void Start()
     {
+        actions = new XRIDefaultInputActions();
         rb = GetComponent<Rigidbody>();
     }
 
     private void Update()
     {
+
         if(Input.GetKey(KeyCode.W))
         {
             targetThrust = maxThrust;
