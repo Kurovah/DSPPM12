@@ -1,3 +1,4 @@
+using Cinemachine;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -7,7 +8,8 @@ public class GearShift : MonoBehaviour
 {
     public Transform grabbingHand, stick, rootPos;
     bool isGrabbed;
-    Vector3 startPos;
+    public CinemachinePathBase track;
+    public CinemachineDollyCart stickCart;
     // Start is called before the first frame update
     void Start()
     {
@@ -19,18 +21,20 @@ public class GearShift : MonoBehaviour
     {
         if (isGrabbed)
         {
-            Vector3 projectionVec = grabbingHand.position - rootPos.position;
-            Vector3 normal = rootPos.right;
-            Vector3 newPos = Vector3.Project(projectionVec, normal);
-            newPos.y = newPos.z = 0; ;
-            stick.position = rootPos.position + newPos;
+            float closest = track.FindClosestPoint(grabbingHand.position, 0,100,5);
+            stickCart.m_Position = closest;
         }
     }
 
-    public void OnGrabbed(SelectEnterEventArgs enterEventArgs)
+    public void OnGrabbed(SelectEnterEventArgs args)
     {
         Debug.Log("Grabbed");
-        grabbingHand = enterEventArgs.interactorObject.transform;
+        grabbingHand = args.interactorObject.transform;
         isGrabbed = true;
+    }
+
+    public float GetAccelAmount()
+    {
+        return stickCart.m_Position;
     }
 }

@@ -28,23 +28,26 @@ public class PlayercontrollerNew : MonoBehaviour
 
 
     [Header("Vehichle")]
-    public Transform WheelPivot;
+    public GearShift gearShift;
+    public WheelScript wheelScript;
 
     // Start is called before the first frame update
     void Start()
     {
+        gearShift = GetComponentInChildren<GearShift>();
+        wheelScript = GetComponentInChildren<WheelScript>();
         actions = new XRIDefaultInputActions();
-        rb = GetComponent<Rigidbody>();
+        //rb = GetComponent<Rigidbody>();
     }
 
     private void Update()
     {
 
-        if(Input.GetKey(KeyCode.W))
+        if(gearShift.GetAccelAmount() > 0)
         {
-            targetThrust = maxThrust;
+            targetThrust = maxThrust * gearShift.GetAccelAmount();
 
-            targetTurn = maxTurn * Input.GetAxis("Horizontal");
+            targetTurn = maxTurn * wheelScript.GetTurnAmount();
         }
 
         thrust = Mathf.Lerp(thrust, targetThrust, 0.8f * Time.deltaTime);targetThrust = 0;
@@ -74,7 +77,7 @@ public class PlayercontrollerNew : MonoBehaviour
 
         //remove drift
         Vector3 vel = rb.velocity, forward = transform.forward;
-        rb.AddForce(forward - vel, ForceMode.Acceleration);
+        //rb.AddForce(forward - vel, ForceMode.Acceleration);
     }
 
     private void OnDrawGizmos()
