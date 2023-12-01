@@ -1,19 +1,9 @@
 fileFormatVersion: 2
-guid: 1afaf306e6cc49e4f9e33895b4cca315
+guid: 8f5cea01164a48f4fac79ca2f08f80c2
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
-  externalObjects:
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: Material
-    second: {fileID: 2100000, guid: 15dbec3e94b61054c808dcb48cb31bff, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: ScreenMat
-    second: {fileID: 2100000, guid: 1dbcf3220c4395a418ad63ab6d8ff7df, type: 2}
+  externalObjects: {}
   materials:
     materialImportMode: 2
     materialName: 0
@@ -100,7 +90,7 @@ ModelImporter:
     armStretch: 0.05
     legStretch: 0.05
     feetSpacing: 0
-    globalScale: 2
+    globalScale: 0.02
     rootMotionBoneName: 
     hasTranslationDoF: 0
     hasExtraRoot: 0

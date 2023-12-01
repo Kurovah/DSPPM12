@@ -18,7 +18,7 @@ public class PlayercontrollerNew : MonoBehaviour
 
     public List<Transform> suspensionPoints;
     public Rigidbody rb;
-    public CinemachineVirtualCamera virtualCamera;
+    public Camera playerCam;
 
 
     [Header("VR")]
@@ -52,7 +52,7 @@ public class PlayercontrollerNew : MonoBehaviour
 
         thrust = Mathf.Lerp(thrust, targetThrust, 0.8f * Time.deltaTime);targetThrust = 0;
         turn = Mathf.Lerp(turn, targetTurn, 0.95f * Time.deltaTime);targetTurn = 0;
-        virtualCamera.m_Lens.FieldOfView = HelperScripts.Remap(thrust, 0, maxThrust, 60, 85);
+        playerCam.fieldOfView = HelperScripts.Remap(thrust, 0, maxThrust, 60, 85);
     }
     // Update is called once per frame
     void FixedUpdate()

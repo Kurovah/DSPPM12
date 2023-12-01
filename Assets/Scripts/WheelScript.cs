@@ -7,7 +7,7 @@ using UnityEngine.XR.Interaction.Toolkit;
 
 public class WheelScript : MonoBehaviour
 {
-    public Transform grabbingHand,Wheel,Testblock;
+    public Transform grabbingHand,Wheel,root;
     bool isGrabbed;
 
     // Start is called before the first frame update
@@ -22,10 +22,11 @@ public class WheelScript : MonoBehaviour
         
         if (isGrabbed)
         {
-            Plane pl = new Plane(Wheel.right, Wheel.position + Wheel.forward);
+            Plane pl = new Plane(Wheel.up, root.position + Wheel.forward);
             Vector3 p1 = pl.ClosestPointOnPlane(grabbingHand.position);
-            Testblock.position = p1;
-            Wheel.forward = Vector3.Cross(Wheel.right, (p1 - Wheel.position).normalized);
+            Vector3 convP = root.InverseTransformPoint(p1);
+            float angle = Vector3.Angle(Vector3.up, p1 - root.position);
+            Wheel.localEulerAngles = new Vector3((angle - 90) * Vector3.Dot(Wheel.forward, p1 - root.position), 0, 90);
         }
 
     }
