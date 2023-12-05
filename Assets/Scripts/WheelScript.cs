@@ -9,17 +9,20 @@ public class WheelScript : MonoBehaviour
 {
     public Transform grabbingHand,Wheel,root;
     bool isGrabbed;
-
+    public PlayercontrollerNew playerController;
     // Start is called before the first frame update
     void Start()
     {
-        
+        playerController = GetComponentInParent<PlayercontrollerNew>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        if (playerController.controlType == PlayercontrollerNew.ControlTypes.Keyboard)
+        {
+
+        }
         if (isGrabbed)
         {
             Plane pl = new Plane(Wheel.up, root.position + Wheel.forward);

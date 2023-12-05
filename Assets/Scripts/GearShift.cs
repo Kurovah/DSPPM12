@@ -11,15 +11,18 @@ public class GearShift : MonoBehaviour
     bool isGrabbed;
     public CinemachinePathBase track;
     public CinemachineDollyCart stickCart;
+    public PlayercontrollerNew playerController;
     // Start is called before the first frame update
     void Start()
     {
-        
+        playerController = GetComponentInParent<PlayercontrollerNew>();
     }
 
     // Update is called once per frame
     void Update()
     {
+        
+
         if (isGrabbed)
         {
             float closest = track.FindClosestPoint(grabbingHand.position, 0,100,5);
@@ -43,6 +46,13 @@ public class GearShift : MonoBehaviour
     }
     public float GetAccelAmount()
     {
-        return stickCart.m_Position;
+        if (playerController.controlType == PlayercontrollerNew.ControlTypes.Keyboard)
+        {
+            return Input.GetAxis("Vertical");
+        } else
+        {
+            return stickCart.m_Position;
+        }
+        
     }
 }

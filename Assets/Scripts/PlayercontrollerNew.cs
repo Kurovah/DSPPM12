@@ -6,6 +6,12 @@ using UnityEngine;
 
 public class PlayercontrollerNew : MonoBehaviour
 {
+    public enum ControlTypes
+    {
+        VR,
+        Keyboard
+    }
+    public ControlTypes controlType = ControlTypes.Keyboard;
     public float checkDis, suspensionForce;
 
     public float maxThrust;
