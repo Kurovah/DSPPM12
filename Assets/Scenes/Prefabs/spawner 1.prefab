@@ -59,7 +59,7 @@ MonoBehaviour:
   targetIndex: 0
   car: {fileID: 8073418998210729422}
   target: {fileID: 0}
-  speed: 40
+  speed: 10
 --- !u!1 &1909558196585240251
 GameObject:
   m_ObjectHideFlags: 0
