@@ -1,6 +1,7 @@
 using Cinemachine;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.XR.Interaction.Toolkit;
 
@@ -28,11 +29,18 @@ public class GearShift : MonoBehaviour
 
     public void OnGrabbed(SelectEnterEventArgs args)
     {
-        Debug.Log("Grabbed");
-        grabbingHand = args.interactorObject.transform;
-        isGrabbed = true;
+        if (!isGrabbed)
+        {
+            Debug.Log("Grabbed");
+            grabbingHand = args.interactorObject.transform;
+            isGrabbed = true;
+        }
     }
-
+    public void OnReleased(SelectExitEventArgs args)
+    {
+        grabbingHand = null;
+        isGrabbed = false;
+    }
     public float GetAccelAmount()
     {
         return stickCart.m_Position;

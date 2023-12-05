@@ -38,6 +38,13 @@ public class WheelScript : MonoBehaviour
         isGrabbed = true;
     }
 
+
+    public void OnReleased(SelectExitEventArgs args)
+    {
+        grabbingHand = null;
+        isGrabbed = false;
+        Wheel.localEulerAngles = new Vector3(0, 0, 90);
+    }
     public float GetTurnAmount()
     {
         return Mathf.Clamp(HelperScripts.Remap(Wheel.localRotation.eulerAngles.x, 180, 0, -1, 1), -1, 1);
