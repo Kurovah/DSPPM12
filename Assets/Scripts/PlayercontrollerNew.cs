@@ -6,12 +6,6 @@ using UnityEngine;
 
 public class PlayercontrollerNew : MonoBehaviour
 {
-    public enum ControlTypes
-    {
-        VR,
-        Keyboard
-    }
-    public ControlTypes controlType = ControlTypes.Keyboard;
     public float checkDis, suspensionForce;
 
     public float maxThrust;
@@ -24,41 +18,25 @@ public class PlayercontrollerNew : MonoBehaviour
 
     public List<Transform> suspensionPoints;
     public Rigidbody rb;
-    public Camera playerCam;
-
-
-    [Header("VR")]
-    public Transform HandL;
-    public Transform HandR;
-    public XRIDefaultInputActions actions;
-
-
-    [Header("Vehichle")]
-    public GearShift gearShift;
-    public WheelScript wheelScript;
-
+    public CinemachineVirtualCamera virtualCamera;
     // Start is called before the first frame update
     void Start()
     {
-        gearShift = GetComponentInChildren<GearShift>();
-        wheelScript = GetComponentInChildren<WheelScript>();
-        actions = new XRIDefaultInputActions();
-        //rb = GetComponent<Rigidbody>();
+        rb = GetComponent<Rigidbody>();
     }
 
     private void Update()
     {
-
-        if(gearShift.GetAccelAmount() > 0)
+        if(Input.GetKey(KeyCode.W))
         {
-            targetThrust = maxThrust * gearShift.GetAccelAmount();
+            targetThrust = maxThrust;
 
-            targetTurn = maxTurn * wheelScript.GetTurnAmount();
+            targetTurn = maxTurn * Input.GetAxis("Horizontal");
         }
 
         thrust = Mathf.Lerp(thrust, targetThrust, 0.8f * Time.deltaTime);targetThrust = 0;
         turn = Mathf.Lerp(turn, targetTurn, 0.95f * Time.deltaTime);targetTurn = 0;
-        playerCam.fieldOfView = HelperScripts.Remap(thrust, 0, maxThrust, 60, 85);
+        virtualCamera.m_Lens.FieldOfView = HelperScripts.Remap(thrust, 0, maxThrust, 60, 85);
     }
     // Update is called once per frame
     void FixedUpdate()
@@ -83,7 +61,7 @@ public class PlayercontrollerNew : MonoBehaviour
 
         //remove drift
         Vector3 vel = rb.velocity, forward = transform.forward;
-        //rb.AddForce(forward - vel, ForceMode.Acceleration);
+        rb.AddForce(forward - vel, ForceMode.Acceleration);
     }
 
     private void OnDrawGizmos()
