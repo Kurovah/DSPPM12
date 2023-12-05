@@ -19,19 +19,25 @@ public class PlayercontrollerNew : MonoBehaviour
     public List<Transform> suspensionPoints;
     public Rigidbody rb;
     public CinemachineVirtualCamera virtualCamera;
+
+    [Header("Car Parts")]
+    public WheelScript wheel;
+    public GearShift stick;
     // Start is called before the first frame update
     void Start()
     {
         rb = GetComponent<Rigidbody>();
+        wheel = GetComponentInChildren<WheelScript>();
+        stick = GetComponentInChildren<GearShift>();
     }
 
     private void Update()
     {
-        if(Input.GetKey(KeyCode.W))
+        if(stick.GetAccelAmount() > 0)
         {
-            targetThrust = maxThrust;
+            targetThrust = maxThrust * stick.GetAccelAmount();
 
-            targetTurn = maxTurn * Input.GetAxis("Horizontal");
+            targetTurn = maxTurn * (1 - wheel.GetTurnAmount());
         }
 
         thrust = Mathf.Lerp(thrust, targetThrust, 0.8f * Time.deltaTime);targetThrust = 0;
