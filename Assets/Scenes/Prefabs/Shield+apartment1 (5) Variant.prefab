@@ -61,7 +61,7 @@ PrefabInstance:
     - target: {fileID: 935019381546379296, guid: 8c1cd6a343a071d47889ac73535ee67a,
         type: 3}
       propertyPath: m_Name
-      value: Shield+apartment1 (5) Variant
+      value: apartment1 (5) Variant
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -97,5 +97,5 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 56.092834, y: 31.63171, z: 14.768072}
-  m_Center: {x: -0.6630554, y: 9.370638, z: -5.2126064}
+  m_Size: {x: 56.092834, y: 31.63171, z: 17.773088}
+  m_Center: {x: -0.6630554, y: 9.370638, z: -3.7100983}
