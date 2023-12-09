@@ -22,13 +22,13 @@ public class PlayercontrollerNew : MonoBehaviour
 
     [Header("Car Parts")]
     public WheelScript wheel;
-    public GearShift stick;
+    public AcceleratorButton stick;
     // Start is called before the first frame update
     void Start()
     {
         rb = GetComponent<Rigidbody>();
         wheel = GetComponentInChildren<WheelScript>();
-        stick = GetComponentInChildren<GearShift>();
+        stick = GetComponentInChildren<AcceleratorButton>();
     }
 
     private void Update()

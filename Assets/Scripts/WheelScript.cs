@@ -22,12 +22,16 @@ public class WheelScript : MonoBehaviour
         
         if (isGrabbed)
         {
-            Plane pl = new Plane(root.up, root.position + root.forward);
-            Vector3 p1 = pl.ClosestPointOnPlane(grabbingHand.position);
-            testCube.position = p1;
-            Vector3 convP = root.InverseTransformPoint(p1);
-            angle = Vector3.SignedAngle(Vector3.up, p1 - root.position, -root.forward);
-            Wheel.localEulerAngles = new Vector3(- 90 + angle, 0, 90);
+            //Plane pl = new Plane(root.up, root.position + root.forward);
+            //Vector3 p1 = pl.ClosestPointOnPlane(grabbingHand.position);
+            ////testCube.position = p1;
+            //Vector3 convP = root.InverseTransformPoint(p1);
+            //angle = Vector3.SignedAngle(Vector3.up, p1 - root.position, -root.forward);
+            //Wheel.localEulerAngles = new Vector3(- 90 + angle, 0, 90);
+
+            Vector3 p = root.InverseTransformPoint(grabbingHand.position);
+            angle = Mathf.Clamp(HelperScripts.Remap(p.x, -0.5f, .5f, -90, 90), -90, 90);
+            Wheel.localEulerAngles = new Vector3(-90 - angle, 0, 0);
         }
         
 
