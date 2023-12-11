@@ -22,6 +22,7 @@ public class PlayercontrollerNew : MonoBehaviour
     public List<Transform> suspensionPoints;
     public Rigidbody rb;
     public CinemachineVirtualCamera virtualCamera;
+    public GameObject blackOut;
 
     [Header("Car Parts")]
     public WheelScript wheel;
@@ -95,6 +96,7 @@ public class PlayercontrollerNew : MonoBehaviour
         if(collision.gameObject.CompareTag("Crash") && collision.relativeVelocity.magnitude > crashThreshold)
         {
             Debug.Log("Crash");
+            blackOut.SetActive(true);
             SceneManager.LoadScene("DeathScene");
         }
     }
