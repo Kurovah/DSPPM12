@@ -103,6 +103,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: cafe
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: a41fee2d8f613f148a4e78ef16937050,
+        type: 3}
+      propertyPath: m_TagString
+      value: Crash
+      objectReference: {fileID: 0}
     - target: {fileID: 1781640100583868445, guid: a41fee2d8f613f148a4e78ef16937050,
         type: 3}
       propertyPath: m_Materials.Array.data[0]

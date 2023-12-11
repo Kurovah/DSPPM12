@@ -198,6 +198,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: apartment1
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: bbf5dd833fcdd394a8b9c032e8f8e967,
+        type: 3}
+      propertyPath: m_TagString
+      value: Crash
+      objectReference: {fileID: 0}
     - target: {fileID: 1408181606517735100, guid: bbf5dd833fcdd394a8b9c032e8f8e967,
         type: 3}
       propertyPath: m_Materials.Array.data[0]

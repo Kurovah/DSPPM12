@@ -30,8 +30,8 @@ public class WheelScript : MonoBehaviour
             //Wheel.localEulerAngles = new Vector3(- 90 + angle, 0, 90);
 
             Vector3 p = root.InverseTransformPoint(grabbingHand.position);
-            angle = Mathf.Clamp(HelperScripts.Remap(p.x, -0.5f, .5f, -90, 90), -90, 90);
-            Wheel.localEulerAngles = new Vector3(-90 - angle, 0, 0);
+            angle = Mathf.Clamp(HelperScripts.Remap(p.y, -1.5f, 1.5f, -90, 90), -90, 90);
+            Wheel.localEulerAngles = new Vector3(-90 - angle, 90, -90);
         }
         
 
@@ -49,7 +49,7 @@ public class WheelScript : MonoBehaviour
     {
         grabbingHand = null;
         isGrabbed = false;
-        Wheel.localEulerAngles = new Vector3(-90, 0, 90);
+        Wheel.localEulerAngles = new Vector3(-90, 90, -90);
     }
     public float GetTurnAmount()
     {

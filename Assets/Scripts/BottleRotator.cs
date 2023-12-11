@@ -11,13 +11,13 @@ public class BottleRotator : MonoBehaviour
     void Start()
     {
         sinOffset = Random.value;
-        model.Rotate(Vector3.up, Random.value * 360);
+        transform.Rotate(Vector3.up, Random.value * 360);
     }
 
     // Update is called once per frame
     void Update()
     {
         model.localPosition = new Vector3(0, 0.005f + Mathf.Abs(Mathf.Sin(Time.timeSinceLevelLoad + sinOffset) * 0.004f), 0);
-        model.Rotate(Vector3.up, rotationRate * Time.deltaTime);
+        transform.Rotate(Vector3.up, rotationRate);
     }
 }

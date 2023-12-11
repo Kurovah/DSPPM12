@@ -228,6 +228,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: finalcar
       objectReference: {fileID: 0}
+    - target: {fileID: 3530144632460865141, guid: a9e006626a711b045abd450dbc9b9a18,
+        type: 3}
+      propertyPath: m_TagString
+      value: Crash
+      objectReference: {fileID: 0}
     - target: {fileID: 4302705085141791951, guid: a9e006626a711b045abd450dbc9b9a18,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -281,7 +286,11 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 3530144632460865141, guid: a9e006626a711b045abd450dbc9b9a18,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 7142119732114262168}
   m_SourcePrefab: {fileID: 100100000, guid: a9e006626a711b045abd450dbc9b9a18, type: 3}
 --- !u!4 &8073418998210729422 stripped
 Transform:
@@ -289,3 +298,30 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 5457461937939489025}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &8881480413622423412 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3530144632460865141, guid: a9e006626a711b045abd450dbc9b9a18,
+    type: 3}
+  m_PrefabInstance: {fileID: 5457461937939489025}
+  m_PrefabAsset: {fileID: 0}
+--- !u!65 &7142119732114262168
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8881480413622423412}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 3.91, y: 2.86, z: 5.99}
+  m_Center: {x: 0, y: 1.94, z: 0.58}

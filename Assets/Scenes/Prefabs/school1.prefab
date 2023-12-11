@@ -73,6 +73,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: school1
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: de25854241e31d142a8a448016a37330,
+        type: 3}
+      propertyPath: m_TagString
+      value: Crash
+      objectReference: {fileID: 0}
     - target: {fileID: 7071182760956848314, guid: de25854241e31d142a8a448016a37330,
         type: 3}
       propertyPath: m_Materials.Array.data[0]

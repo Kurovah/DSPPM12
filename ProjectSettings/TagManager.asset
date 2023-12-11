@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Bottle collection
   - Bottle
+  - Crash
   layers:
   - Default
   - TransparentFX

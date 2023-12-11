@@ -2,7 +2,9 @@ using Cinemachine;
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayercontrollerNew : MonoBehaviour
 {
@@ -15,6 +17,7 @@ public class PlayercontrollerNew : MonoBehaviour
     public float maxTurn;
     float targetTurn;
     float turn;
+    public float crashThreshold;
 
     public List<Transform> suspensionPoints;
     public Rigidbody rb;
@@ -23,6 +26,8 @@ public class PlayercontrollerNew : MonoBehaviour
     [Header("Car Parts")]
     public WheelScript wheel;
     public AcceleratorButton stick;
+
+    public TMP_Text testText;
     // Start is called before the first frame update
     void Start()
     {
@@ -68,6 +73,7 @@ public class PlayercontrollerNew : MonoBehaviour
         //remove drift
         Vector3 vel = rb.velocity, forward = transform.forward;
         rb.AddForce(forward - vel, ForceMode.Acceleration);
+        //testText.text = rb.velocity.magnitude.ToString();
     }
 
     private void OnDrawGizmos()
@@ -75,6 +81,21 @@ public class PlayercontrollerNew : MonoBehaviour
         foreach (Transform t in suspensionPoints)
         {
             Gizmos.DrawLine(t.position, t.position + Vector3.down * checkDis);
+        }
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if(collision.collider.gameObject == this.gameObject)
+        {
+            return;
+        }
+
+        
+        if(collision.gameObject.CompareTag("Crash") && collision.relativeVelocity.magnitude > crashThreshold)
+        {
+            Debug.Log("Crash");
+            SceneManager.LoadScene("DeathScene");
         }
     }
 }
