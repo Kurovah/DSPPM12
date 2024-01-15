@@ -21,7 +21,7 @@ public class CarMovement : MonoBehaviour
         Vector3 dir = target.position - car.position; //make direction vector
         dir.y = 0;
         car.forward = dir; // looking towards direction you are going
-car.position += dir.normalized*speed*Time.deltaTime; //add direction vector to car's position
+        car.position += dir.normalized*speed*Time.deltaTime; //add direction vector to car's position
         if(Vector3.Distance(car.position, target.position) < 10f){
             if(targetIndex == points.Count-1)
             {
